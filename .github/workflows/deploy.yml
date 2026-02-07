@@ -2,7 +2,7 @@ name: CI/CD Pipeline Simulation
 
 on:
   push:
-    branches: [ "main" ] # 仅在 main 分支提交时触发
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -14,7 +14,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 1. 运行测试（Task 4 要求）
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -26,11 +25,9 @@ jobs:
 
     - name: Run Data Analysis Test
       run: |
-        # 模拟运行分析脚本，确保代码逻辑无误
+        # Simulate running the analysis script to ensure code logic is correct
         python data_analysis.py
-      # 注意：如果脚本中有 plt.show()，可能会阻塞流水线，建议在测试环境中屏蔽绘图显示
 
-    # 2. 构建并推送 Docker 镜像
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -44,7 +41,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/diet-analysis:latest
 
-    # 3. 模拟部署输出（Task 4 证据要求）
     - name: Evidence of simulated deployment
       run: |
         echo "Deployment simulated successfully at $(date)"
