@@ -45,5 +45,5 @@ jobs:
     - name: Evidence of simulated deployment
       run: |
         echo "Deployment simulated successfully at $(date)"
-        # 这里也同步修改了输出信息
+        
         echo "Docker image is now available at ${{ secrets.DOCKER_HUB_USERNAME }}/cloud-diet-analysis:latest"
