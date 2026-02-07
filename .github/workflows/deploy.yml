@@ -39,9 +39,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/diet-analysis:latest
+    
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/cloud-diet-analysis:latest
 
     - name: Evidence of simulated deployment
       run: |
         echo "Deployment simulated successfully at $(date)"
-        echo "Docker image is now available at ${{ secrets.DOCKER_HUB_USERNAME }}/diet-analysis:latest"
+        # 这里也同步修改了输出信息
+        echo "Docker image is now available at ${{ secrets.DOCKER_HUB_USERNAME }}/cloud-diet-analysis:latest"
